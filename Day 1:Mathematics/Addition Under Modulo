@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/addition-under-modulo/0/?track=dsa-workshop-1-mathematics&batchId=308
+long long sumUnderModulo(long long a,long long b)
+{
+    // code here
+    long long int ans,x,y;
+    x=a%1000000007;
+    y=b%1000000007;
+    ans=x+y;
+    if(ans>1000000007)
+    return ans%1000000007;
+    else
+    return ans;
+}
