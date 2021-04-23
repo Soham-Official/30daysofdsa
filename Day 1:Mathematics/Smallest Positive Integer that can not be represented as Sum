@@ -1,0 +1,14 @@
+    https://practice.geeksforgeeks.org/problems/b6b608d4eb1c45f2b5cace77c4914f302ff0f80d/0/?track=MD-Math&batchId=144
+    long long smallestpositive(vector<long long> a, int n)
+    { 
+        long long int res=1;
+        sort(a.begin(),a.end());
+        for(int i=0;i<n ;i++)
+        {
+            if(a[i]<=res)
+            res+=a[i];
+            else
+            break;
+        }
+        return  res;
+    }
