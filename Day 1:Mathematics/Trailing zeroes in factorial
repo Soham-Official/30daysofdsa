@@ -1,0 +1,12 @@
+https://practice.geeksforgeeks.org/problems/trailing-zeroes-in-factorial5134/0/?track=MD-Math&batchId=144
+   int trailingZeroes(int N)
+    {
+        int i=5;
+        int count=0;
+        while(N/i>=1)
+        {
+            count+=N/i;
+            i*=5;
+        }
+        return count;
+    }
