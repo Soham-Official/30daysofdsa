@@ -1,0 +1,10 @@
+https://practice.geeksforgeeks.org/problems/digits-in-factorial/0/?track=dsa-workshop-1-mathematics&batchId=308
+int digitsInFactorial(int N)
+    {
+        double digits=0;
+        for(int i=1;i<=N;i++)
+        {
+            digits+=log10(i);
+        }
+        return floor(digits)+1;
+    }
