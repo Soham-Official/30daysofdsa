@@ -1,0 +1,18 @@
+	https://practice.geeksforgeeks.org/problems/quadratic-equation-roots/0/?track=dsa-workshop-1-mathematics&batchId=308
+  def quadraticRoots(self, a, b, c):
+	    ans=[]
+	    d=b**2-4*a*c
+        if(d<0):
+            ans.append(-1)
+        else:
+            x=math.floor((-b+math.sqrt(d))/(2*a))
+            y=math.floor((-b-math.sqrt(d))/(2*a))
+            if(x>y):
+                ans.append(x)
+                ans.append(y)
+            else:
+                ans.append(y)
+                ans.append(x)
+            
+            
+        return ans
