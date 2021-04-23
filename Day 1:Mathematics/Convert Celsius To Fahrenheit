@@ -1,0 +1,6 @@
+https://practice.geeksforgeeks.org/problems/convert-celsius-to-fahrenheit/0/?track=dsa-workshop-1-mathematics&batchId=308
+double cToF(int C)
+{
+    //Your code here
+    return (C*9)/5+32;
+}
