@@ -1,0 +1,8 @@
+https://practice.geeksforgeeks.org/problems/gp-term/0/?track=dsa-workshop-1-mathematics&batchId=308
+double termOfGP(int A,int B,int N)
+{
+    //Your code here
+    double r=(double)B/(double)A,ans=1;
+   
+    return A*pow(r,N-1);
+}
