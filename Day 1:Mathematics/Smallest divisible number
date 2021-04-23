@@ -1,0 +1,18 @@
+Problem code
+https://practice.geeksforgeeks.org/problems/smallest-divisible-number/1/?track=dsa-workshop-1-mathematics&batchId=308
+sollution function
+long long int gcd(long long int a,long long  int b) 
+{ 
+    if (b == 0) 
+        return a; 
+    return gcd(b, a % b); 
+} 
+    long long getSmallestDivNum(long long n){
+        // code here
+        long long int ans=1;
+        for(long long int i=2;i<=n;i++)
+        {
+            ans=(ans*i)/gcd(ans,i);
+        }
+        return ans;
+    }
