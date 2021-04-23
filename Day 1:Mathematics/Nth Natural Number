@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/nth-natural-number/0/?track=MD-Math&batchId=144
+  	long long findNth(long long N)
+    {
+        long long int c=1;
+        long long int ans=0;
+        while(N>0)
+        {
+            ans=ans+(c*(N%9));
+            N=N/9;
+            c*=10;
+        }
+        return ans;
+    }
