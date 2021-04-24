@@ -1,0 +1,20 @@
+https://practice.geeksforgeeks.org/problems/find-transition-point-1587115620/0/?track=dsa-workshop-1-arrays&batchId=308
+int transitionPoint(int a[], int n) {
+    // code here
+    int left=0;
+    int right=n-1;
+    while(left<=right)
+    {
+        int mid=(left+right)/2;
+        if(a[mid]==1)
+        {
+            if(a[mid-1]==0)
+            return mid;
+            else
+            right--;
+        }
+        if(a[mid]==0)
+        left++;
+    }
+    return -1;
+}
