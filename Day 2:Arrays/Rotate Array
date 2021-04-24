@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/0/?track=dsa-workshop-1-arrays&batchId=308
+void rotateArr(int arr[], int d, int n){
+    // code here
+    int b[n],j=0;
+    for(int i=d;i<n;i++)
+    {
+        b[j]=arr[i];
+        j++;
+    }
+    for(int i=0;i<d;i++)
+     {
+        b[j]=arr[i];
+        j++;
+    }
+    for(int i=0;i<n;i++)
+    {
+        arr[i]=b[i];
+    }
+}
