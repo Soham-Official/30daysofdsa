@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/who-has-the-majority/0/?track=dsa-workshop-1-arrays&batchId=308
+int majorityWins(int a[], int n, int x,int y)
+{
+    // code here   
+    int count=0,count1=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==x)
+        count++;
+        if(a[i]==y)
+        count1++;
+        
+    }
+    if(count>count1)
+    return x;
+    else if(count<count1)
+    return y;
+    else
+    {
+        if(x<y)
+        return x;
+        else
+        return y;
+    }
+}
