@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1/?track=dsa-workshop-1-arrays&batchId=308
+int remove_duplicate(int a[],int n){
+        int j=0;
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]!=a[i+1])
+            {
+                a[j]=a[i];
+                j++;
+            }
+        }
+        return j;
+    }
