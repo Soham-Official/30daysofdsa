@@ -1,0 +1,14 @@
+https://practice.geeksforgeeks.org/problems/first-repeating-element4018/0/?track=dsa-workshop-1-arrays&batchId=308#
+int firstRepeated(int a[], int n) {
+    //code here
+    long long int maxi=*max_element(a,a+n);
+    vector<long long int>h(maxi+1,0);
+    for(int i=0;i<n;i++)
+        h[a[i]]++;
+    for(int i=0;i<n;i++)
+    {
+        if(h[a[i]]>1)
+        return i+1;
+    }
+    return -1;
+}
