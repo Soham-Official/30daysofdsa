@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/0/?track=dsa-workshop-1-arrays&batchId=308
+vector<int> subarraySum(int a[], int n, int s){
+    
+    // Your code here
+    vector <int> res;
+    int sum=a[0],start=0,end=0;
+    for(int i=1;i<=n;i++)
+    {
+        while(sum>s && start<i-1)
+        sum-=a[start++];
+        if(sum==s)
+        {
+            res.push_back(start+1);
+            res.push_back(i);
+            return res;
+        }
+        // if(i<n)
+        sum+=a[i];
+    }
+    res.push_back(-1);
+    return res;
+}
