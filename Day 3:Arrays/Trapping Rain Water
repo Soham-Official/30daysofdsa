@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/0/?track=dsa-workshop-1-arrays&batchId=308
+int trappingWater(int arr[], int n){
+    int left,right,sum=0,a[n],b[n];
+    left=arr[0];
+    right=arr[n-1];
+    for(int i=0;i<n;i++)
+    {
+        
+        left=max(left,arr[i]);
+        a[i]=left;
+        right=max(right,arr[n-i-1]);
+        b[n-i-1]=right;
+        
+    }
+    for(int i=0;i<n;i++)
+    sum+=min(a[i],b[i])-arr[i];
+    return sum;
+}
