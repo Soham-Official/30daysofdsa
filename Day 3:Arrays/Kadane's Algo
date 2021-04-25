@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/0/?track=dsa-workshop-1-arrays&batchId=308
+int maxSubarraySum(int arr[], int n){
+    
+    // Your code here
+    int meh=0,msf=-100000;
+    for(int i=0;i<n;i++)
+    {
+        meh+=arr[i];
+        if(meh<arr[i])
+        meh=arr[i];
+        if(meh>msf)
+        msf=meh;
+    }
+    return msf;
+    
+}
