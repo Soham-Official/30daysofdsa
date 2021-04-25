@@ -1,0 +1,35 @@
+https://practice.geeksforgeeks.org/problems/plus-one/0/?track=md-arrays&batchId=144
+ vector<int> increment(vector<int> arr ,int N) {
+        int carry=0;
+        if(arr[N-1]==9)
+        {
+            arr[N-1]=0;
+            carry=1;
+        }
+        else
+        arr[N-1]++;
+        for(int i=N-2;i>=0;i--)
+        {
+            if(carry==1)
+            {
+                 if(arr[i]==9)
+                     
+                     arr[i]=0;
+                else
+                 {
+                     arr[i]++;
+                     carry=0;
+                     break;
+                 }
+            }
+        }
+        vector<int> v;
+        for(int i=N-1;i>=0;i--)
+        {
+            v.push_back(arr[i]);
+        }
+        if(carry==1)
+        v.push_back(1);
+        reverse(v.begin(),v.end());
+        return v;
+    }
