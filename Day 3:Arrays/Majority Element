@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/majority-element-1587115620/0/?track=md-arrays&batchId=144
+ int majorityElement(int a[], int size)
+    {
+        
+       int x=*max_element(a,a+size);
+       int h[x+1]={0};
+       int c=0;
+       for(int i=0;i<size;i++)
+       h[a[i]]++;
+       for(int i=0;i<x+1;i++)
+       {
+        //   cout<<i<<" "<<h[i]<<endl;
+           if(h[i]>size/2)
+           {
+               c++;
+               return i;
+               
+           }
+       }
+       if(c==0)
+       return -1;
+        
+    }
