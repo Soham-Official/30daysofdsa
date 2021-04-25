@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/smallest-positive-missing-number3051/0/?track=dsa-workshop-1-arrays&batchId=308
+int findMissing(int a[], int n) { 
+    
+    // Your code here
+    sort(a,a+n);
+    int x=0;
+    for(int i=0;i<n;i++)
+     {
+        
+        if(a[i]>0)
+        {
+          if(a[i]-x>1)
+          return x+1;
+          
+          x=a[i];
+        }
+    }
+    return a[n-1]+1;
+}
