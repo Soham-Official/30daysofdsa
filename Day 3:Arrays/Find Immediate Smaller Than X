@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/find-immediate-smaller-than-x/0/?track=dsa-workshop-1-arrays&batchId=308
+int immediateSmaller(int a[], int n, int x)
+{
+    // your code here
+    int ans=-1,flag=0;
+    
+    
+    for(int i=n-1;i>=0;i--)
+    {
+        if(a[i]<x)
+          ans=max(a[i],ans);
+    }
+    
+    return ans;
+    
+}
