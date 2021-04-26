@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/array-of-alternate-ve-and-ve-nos1401/1/?track=md-arrays&batchId=144
+	void rearrange(int arr[], int n) {
+	    int a[n],b[n];
+	    int x=0,y=0;
+	    for(int i=0;i<n;i++)
+	    if(arr[i]>=0)
+	    a[x++]=arr[i];
+	    else
+	    b[y++]=arr[i];
+	    int z=0,q=0;
+	    int j=0;
+	    while(z<x and q<y)
+	    {
+	        if(j%2==0 )
+	        {
+	            arr[j]=a[z];
+	            z++;
+	        }
+	        if(j%2!=0 )
+	        {
+	            arr[j]=b[q];
+	            q++;
+	        }
+	        j++;
+	   }
+	   for(int k=z;k<x;k++)
+	   arr[j++]=a[k];
+	   for(int k=q;k<y;k++)
+	   arr[j++]=b[k];
+	    
+	}
