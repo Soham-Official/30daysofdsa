@@ -1,0 +1,35 @@
+https://practice.geeksforgeeks.org/problems/three-sum-closest/0/?track=md-arrays&batchId=144
+int threeSumClosest(vector<int> a, int target) {
+        int ans=a[0]+a[1]+a[2];
+        int total;
+        int x=0;
+        sort(a.begin(),a.end());
+        int l,r;
+        for(int i=0;i<a.size();i++)
+        {
+            l=i+1;
+            r=a.size()-1;
+            while(l<r)
+            {
+                total=a[i]+a[l]+a[r];
+                if(total==target)
+                return target;
+                if(abs(target-total)<abs(target-ans))
+                {
+                    
+                    ans=total;
+                }
+                else if(abs(target-total)==abs(target-ans))
+                {
+                   if(ans<total)
+                   ans= total;
+                }
+                if(total>target)
+                r--;
+                else if(total<target)
+                l++;
+            }
+        }
+        return ans;
+        
+    }
