@@ -1,0 +1,36 @@
+https://practice.geeksforgeeks.org/problems/max-circular-subarray-sum-1587115620/0/?track=md-arrays&batchId=144
+int circularSubarraySum(int a[], int num){
+        int meh1=0,msf1=INT_MIN;
+        if(num==1)
+        return a[0];
+        for(int i=0;i<num;i++)
+        {
+            meh1+=a[i];
+            if(meh1<a[i])
+            meh1=a[i];
+            msf1=max(msf1,meh1);
+        }
+        // cout<<msf1<<" ";
+        
+        
+        int sum=0;
+        for(int i=0;i<num;i++)
+        sum+=a[i];
+        int meh=0,msf=INT_MIN;
+        for(int i=0;i<num;i++)
+        {
+            meh+=a[i]*(-1);
+            if(meh<a[i]*(-1))
+            meh=a[i]*(-1);
+            msf=max(msf,meh);
+        }
+        msf=msf*(-1);
+        // cout<<msf<<" "<<sum<<" "<<sum+msf<<" "<<sum-msf<<" "; 
+        if(sum==msf)
+        return msf1;
+        if(msf1<sum-msf)
+        return sum-msf;
+        else
+        return msf1;
+        
+    }
