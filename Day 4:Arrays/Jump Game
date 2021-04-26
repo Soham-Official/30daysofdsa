@@ -1,0 +1,23 @@
+ int canReach(int a[], int N) {
+        int jump=1;
+        int step=a[0];
+        int reach=a[0];
+        if(a[0]==0)
+        return 0;
+        for(int i=1;i<N;i++)
+        {
+            reach=max(reach,i+a[i]);
+            if(reach>=N-1)
+            return 1;
+            step--;
+            if(step==0)
+            {
+                jump++;
+                if(i>=reach)
+                return 0;
+                step=reach-i;
+            }
+            
+        }
+        return 1;
+    }
