@@ -1,0 +1,15 @@
+https://practice.geeksforgeeks.org/problems/maximum-value-of-difference-of-a-pair-of-elements-and-their-index/0/?track=md-arrays&batchId=144
+int maxValue(int arr[], int N) {
+        int eq1min=INT_MAX;
+        int eq2min=INT_MAX;
+        int eq1max=INT_MIN;
+        int eq2max=INT_MIN;
+        for(int i=0;i<N;i++)
+        {
+            eq1min=min(eq1min,arr[i]+i);
+            eq1max=max(eq1max,arr[i]+i);
+            eq2min=min(eq2min,arr[i]-i);
+            eq2max=max(eq2max,arr[i]-i);
+        }
+        return max(eq1max-eq1min,eq2max-eq2min);
+    }
