@@ -1,0 +1,11 @@
+https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/0/?track=md-arrays&batchId=144
+ int kthElement(int arr1[], int arr2[], int n, int m, int k)
+    {
+        int a[n+m],i;
+        for( i=0;i<n;i++)
+        a[i]=arr1[i];
+        for(int j=0;j<m;j++)
+        a[i++]=arr2[j];
+        sort(a,a+n+m);
+        return a[k-1];
+    } 
