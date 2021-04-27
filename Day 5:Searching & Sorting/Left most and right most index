@@ -1,0 +1,12 @@
+https://practice.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/0/?track=md-searching&batchId=144
+pair<long,long> indexes(vector<long long> v, long long x)
+    {
+        if(binary_search(v.begin(),v.end(),x))
+        {
+            auto it1=lower_bound(v.begin(),v.end(),x);
+            auto it2=upper_bound(v.begin(),v.end(),x);
+            return {it1-v.begin(), (it2-v.begin())-1};
+        }
+        else
+        return {-1, -1};
+    }
