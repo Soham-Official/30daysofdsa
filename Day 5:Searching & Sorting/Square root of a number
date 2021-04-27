@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/square-root/1/?track=dsa-workshop-1-search-sort&batchId=308#
+ long long int floorSqrt(long long int x) 
+    {
+        long long int start=1;
+        long long int end=x;
+        long long int ans;
+        if(x==1 or x==0)
+        return 1;
+        while(start<=end)
+        {
+            long long int mid=(start+end)/2;
+            if(mid*mid==x)
+            return mid;
+            if(mid*mid<x)
+            {
+                
+                start=mid+1;
+                ans=mid;
+            }
+            else
+            end=mid-1;
+            
+        }
+        return ans;
+    }
