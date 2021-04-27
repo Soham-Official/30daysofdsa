@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/0/?track=dsa-workshop-1-search-sort&batchId=308
+int findPlatform(int arr[], int dep[], int n)
+    {
+    	int i=0,j=0;
+    	int maxplatforms=1;
+    	int currentplatforms=0;
+    	sort(arr,arr+n);
+    	sort(dep,dep+n);
+    	while(i<n and j < n)
+    	{
+    	    if(arr[i]<=dep[j])
+    	    {
+    	        currentplatforms++;
+    	        i++;
+    	    }
+    	    else if(arr[i]>=dep[j])
+    	    {
+    	        currentplatforms--;
+    	        j++;
+    	    }
+    	    
+    	    
+    	    maxplatforms=max(maxplatforms,currentplatforms);
+    	}
+    	return maxplatforms;
+    }
