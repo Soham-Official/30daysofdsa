@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/relative-sorting4323/0/?track=md-sorting&batchId=144#
+vector<int> sortA1ByA2(vector<int> A1, int N, vector<int> A2, int M) 
+    {
+        vector<int> res;
+        int maxelem=*max_element(A1.begin(),A1.end());
+        int h[maxelem+3]={0};
+        for(int i=0;i<A1.size();i++)
+        h[A1[i]]++;
+        for(int i=0;i<A2.size();i++)
+        {
+            if(h[A2[i]]>=1)
+            {
+                while(h[A2[i]]--)
+                res.push_back(A2[i]);
+                
+            }
+        }
+        sort(A1.begin(),A1.end());
+        for(int i=0;i<A1.size();i++)
+        {
+            if(h[A1[i]]>=1)
+            res.push_back(A1[i]);
+        }
+       
+        return res;
+    } 
