@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/maximum-value-in-a-bitonic-array3001/0/?track=md-searching&batchId=144#
+int findMaximum(int arr[], int n) {
+	    if(arr[n-1]>=arr[n-2])
+	    return arr[n-1];
+	    int i=0,j=n-1;
+	    int maxelem=INT_MIN;
+	    while(i<=j)
+	    {
+	        int mid=(i+j)/2;
+	        maxelem=max(maxelem,arr[mid]);
+	        if(arr[mid]>=arr[mid-1])
+	        i++;
+	        else
+	        j--;
+	        
+	    }
+	    return maxelem;
+	}
