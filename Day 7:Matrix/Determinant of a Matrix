@@ -1,0 +1,4 @@
+https://practice.geeksforgeeks.org/problems/determinant-of-a-matrix-1587115620/0/?track=dsa-workshop-1-matrix&batchId=308
+def determinantOfMatrix(self,mat,n):
+       det = np.linalg.det(mat)
+       return math.floor(round(det))
