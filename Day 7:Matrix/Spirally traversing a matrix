@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/0/?track=dsa-workshop-1-matrix&batchId=308
+vector<int> spirallyTraverse(vector<vector<int> > a, int r, int c) 
+    {
+        vector <int> v;
+        int count=0;
+        for(int i=0;i<=r/2;i++)
+        {
+            
+            for(int j=i;j<c-i;j++)
+            {
+                if(count==r*c)
+            break;
+                v.push_back(a[i][j]);
+                count++;
+                
+            }
+            for(int j=i+1;j<r-i;j++)
+            {
+                if(count==r*c)
+            break;v.push_back(a[j][c-1-i]);
+                count++;
+            }
+            for(int j=c-i-2;j>=i;j--)
+            {
+                if(count==r*c)
+            break;v.push_back(a[r-1-i][j]);
+                count++;
+            }
+            for(int j=r-1-i-1;j>i;j--)
+            {
+                if(count==r*c)
+            break;v.push_back(a[j][i]);
+                count++;
+            }
+            if(count==r*c)
+            break;
+            
+        }
+        return v;
+    }
