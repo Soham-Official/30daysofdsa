@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/boolean-matrix-problem-1587115620/1/?track=md-matrix&batchId=144
+void booleanMatrix(vector<vector<int> > &a)
+    {
+        int r=a.size();
+        int c=a[0].size();
+        vector<int>arr(r,0);
+        vector<int>brr(c,0);
+        // int arr[r],brr[c];
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(a[i][j]==1)
+                {
+                    arr[i]=1;
+                    brr[j]=1;
+                }
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(arr[i]==1)
+                a[i][j]=1;
+                if(brr[j]==1)
+                a[i][j]=1;
+            }
+        }
+    }
