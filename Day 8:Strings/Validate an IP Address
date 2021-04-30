@@ -1,0 +1,90 @@
+https://practice.geeksforgeeks.org/problems/validate-an-ip-address-1587115621/0/?track=dsa-workshop-1-strings&batchId=308
+
+int isValid(string s) {
+    int dot=0;
+    string s1="",s2="",s3="",s4="";
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]=='.')
+        dot++;
+    }
+    if(dot!=3)
+    return 0;
+    int j=0;
+        while(s[j]!='.')
+        {
+            s1+=s[j];
+            j++;
+        }
+        j++;
+        while(s[j]!='.')
+        {
+            s2+=s[j];
+            j++;
+        }
+        j++;
+        while(s[j]!='.')
+        {
+            s3+=s[j];
+            j++;
+        }
+        j++;
+        while(j<s.size())
+        {
+            s4+=s[j];
+            j++;
+        }
+        // cout<<s1<<" "<<s2<<" "<<s3<<" "<<s4;
+        if(s1.size()==0 ||s2.size()==0 ||s3.size()==0 ||s4.size()==0 )
+        return 0;
+        if(s1[0]=='0' && s1.size()>1)
+        return 0;
+        if(s2[0]=='0' && s2.size()>1)
+        return 0;
+        if(s3[0]=='0' && s3.size()>1)
+        return 0;
+        if(s4[0]=='0' && s4.size()>1)
+        return 0;
+        int num=0;
+        for(int k=0;k<s1.size();k++)
+        {
+             if (isalpha(s1[k]))
+             return 0;
+            int x=int(s1[k])-48;
+            num=num*10+x;
+        }
+        if(num>255)
+        return 0;
+         num=0;
+        for(int k=0;k<s2.size();k++)
+        {
+            if (isalpha(s2[k]))
+             return 0;
+            int x=int(s2[k])-48;
+            num=num*10+x;
+        }
+        if(num>255)
+        return 0;
+         num=0;
+        for(int k=0;k<s3.size();k++)
+        {
+            if (isalpha(s3[k]))
+             return 0;
+            int x=int(s3[k])-48;
+            num=num*10+x;
+        }
+        if(num>255)
+        return 0;
+         num=0;
+        for(int k=0;k<s4.size();k++)
+        {
+            if (isalpha(s4[k]))
+             return 0;
+            int x=int(s4[k])-48;
+            num=num*10+x;
+        }
+        if(num>255)
+        return 0;
+        
+        return 1;
+    }
