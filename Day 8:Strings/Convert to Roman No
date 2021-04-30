@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/convert-to-roman-no/0/?track=dsa-workshop-1-strings&batchId=308
+string convertToRoman(int n) 
+{
+    int a[]={1,4,5,9,10,40,50,90,100,400,500,900,1000};
+    string s[]={"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
+    int i=12;
+    string st="";
+    while(n>0)
+    {
+        int symb=n/a[i];
+        n=n%a[i];
+        
+        while(symb--)
+        st+=s[i];
+        i--;
+    }
+    return st;
+}
