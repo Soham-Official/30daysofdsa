@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/anagram-1587115620/0/?track=dsa-workshop-1-strings&batchId=308
+
+bool isAnagram(string a, string b){
+        
+        if(a.size()!=b.size())
+        return false;
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+        for(int i=0;i<a.size();i++)
+        {
+            if(a[i]!=b[i])
+            return false;
+        }
+        return true;
+        
+    }
