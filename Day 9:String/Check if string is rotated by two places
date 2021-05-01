@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/check-if-string-is-rotated-by-two-places-1587115620/0/?track=md-string&batchId=144
+
+bool isRotated(string str1, string str2)
+    {
+         int n=str1.size();
+         str2=str2+str2;
+         if(n==1 and str1[0]==str2[0])
+         return true;
+         int pos=str2.find(str1);
+        
+        if(pos==string::npos)
+        return false;
+        if(n-pos==2 or pos==2  )
+        return true;
+        else return false;
+    }
