@@ -1,0 +1,12 @@
+https://practice.geeksforgeeks.org/problems/remove-duplicates3034/0/?track=md-string&batchId=144
+
+string removeDups(string s) 
+	{
+	    string ans="";
+	    for(int i=0;i<s.size();i++)
+	    {
+	        if(ans.find(s[i])==string::npos)
+	        ans+=s[i];
+	    }
+	    return ans;
+	}
