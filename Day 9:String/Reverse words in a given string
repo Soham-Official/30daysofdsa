@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/reverse-words-in-a-given-string5459/0/?track=dsa-workshop-1-strings&batchId=308
+ string reverseWords(string s) 
+     { 
+        string S="";
+        int i=s.size()-1;
+        int right=s.size()-1;
+        int pos=s.size();
+        while(i>=0)
+        {
+            if(s[i]=='.')
+            {
+                for(int j=i+1;j<=right;j++)
+                
+                S=S+s[j];
+                S+='.';
+                right=i-1;
+                pos=i;
+            }
+            i--;
+        }
+        // cout<<pos;
+        for(int j=0;j<pos;j++)
+        S+=s[j];
+        return S;
+    } 
