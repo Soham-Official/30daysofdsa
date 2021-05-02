@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/bit-difference-1587115620/0/?track=dsa-workshop-1-bit-magic&batchId=308
+int countBitsFlip(int a, int b){
+        
+        int x;
+        int ans=0;
+        while(a!=0 || b!=0)
+        {
+            x=(a^b);
+            if((x&1)==1)
+            ans++;
+            a=a>>1;
+            b=b>>1;
+        }
+      return ans;
+        
+    }
