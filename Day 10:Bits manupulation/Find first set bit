@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/find-first-set-bit-1587115620/0/?track=dsa-workshop-1-bit-magic&batchId=308
+
+ unsigned int getFirstSetBit(int n)
+    {
+        int i=1;
+        int x=1;
+        while(n!=0)
+        {
+            if((n&1)==1)
+            {
+                 x=0;
+                break;
+            }
+            else{
+                i++;
+                n=n>>1;
+            }
+        }
+        if(x==0)
+        return i;
+        else
+        return 0;
+    }
