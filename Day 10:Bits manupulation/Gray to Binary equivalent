@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/gray-to-binary-equivalent-1587115620/0/?track=dsa-workshop-1-bit-magic&batchId=308
+
+  int grayToBinary(int n)
+    {
+        
+        int x=0;
+        while(n!=0)
+       {
+           x=x^n;
+           n=n>>1;
+       }
+        return x;
+    }
