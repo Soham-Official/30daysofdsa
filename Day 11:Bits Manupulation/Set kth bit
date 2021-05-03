@@ -1,0 +1,7 @@
+https://practice.geeksforgeeks.org/problems/set-kth-bit3724/0/?track=md-bm&batchId=144
+
+  int setKthBit(int N, int K)
+    {
+        int x=(1<<K);
+        return (N|x);
+    }
