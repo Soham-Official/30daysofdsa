@@ -1,0 +1,9 @@
+https://practice.geeksforgeeks.org/problems/element-appearing-once2552/0/?track=md-bm&batchId=144
+
+int search(int A[], int N){
+	    int x=A[0];
+	    for(int i=1;i<N;i++)
+	    x=(x^A[i]);
+	    return x;
+	    
+	}
