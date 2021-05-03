@@ -1,0 +1,12 @@
+https://practice.geeksforgeeks.org/problems/set-bits0143/0/?track=md-bm&batchId=144
+
+int setBits(int n) {
+        int count=0;
+        while(n>0)
+        {
+            if(n&1)
+            count++;
+            n=n>>1;
+        }
+        return count;
+    }
