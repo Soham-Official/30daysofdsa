@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/check-if-two-arrays-are-equal-or-not3847/1/?track=dsa-workshop-1-hashing&batchId=308
+
+ bool check(vector<ll> A, vector<ll> B, int N) {
+        unordered_map<int,int>mp;
+        for(int i=0;i<N;i++)
+        mp[A[i]]++;
+        for(auto i:B)
+        {
+            if(mp.find(i)==mp.end())
+            return false;
+            if(mp[i]==0)
+            return false;
+            mp[i]--;
+        }
+        return true;
+    }
