@@ -1,0 +1,14 @@
+https://practice.geeksforgeeks.org/problems/key-pair1554/0/?track=dsa-workshop-1-hashing&batchId=308
+
+ bool keypair(vector<int> arr, int N, int X)
+    {
+        unordered_map<int,int> mp;
+        for(int i=0;i<N;i++)
+        {
+            if(mp.find(X-arr[i])==mp.end())
+            mp[arr[i]]++;
+            else
+            return true;
+        }
+        return false;
+    }
