@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/0/?track=dsa-workshop-1-hashing&batchId=308
+
+vector<vector<int> > fourSum(vector<int> &arr, int k) {
+        sort(arr.begin(),arr.end());
+        int n=arr.size();
+        int l, r;
+        vector<vector<int>> ans;
+        for (int i = 0; i < n - 3; i++)
+    {
+        for (int j = i+1; j < n - 2; j++)
+        {
+            l = j + 1;
+            r = n-1;
+ 
+           
+            while (l < r)
+            {
+                if( arr[i] + arr[j] + arr[l] + arr[r] == k)
+                {
+                          vector<int> v;
+                         v.push_back(arr[i]);
+                         v.push_back(arr[j]);
+                         v.push_back(arr[l]);
+                         v.push_back(arr[r]);
+                         ans.push_back(v);
+                         while(l<r and arr[l]==v[2])
+                        l++; 
+                        while(l<r and arr[r]==v[3])
+                        r--;
+                }
+                else if (arr[i] + arr[j] + arr[l] + arr[r] <k)
+                    l++;
+                else 
+                r--;
+            }
+            while(j+1<n and arr[j+1]==arr[j])
+            j++;
+        }
+        while(i+1<n and arr[i+1]==arr[i])
+            i++;
+    }
+        return ans;
+    }
