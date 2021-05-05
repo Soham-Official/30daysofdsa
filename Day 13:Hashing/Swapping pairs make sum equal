@@ -1,0 +1,29 @@
+https://practice.geeksforgeeks.org/problems/swapping-pairs-make-sum-equal4142/0/?track=md-hashing&batchId=144#
+
+int findSwapValues(int A[], int n, int B[], int m)
+	{
+        long long int sum1=0,sum2=0;
+        map<int,int>mp;
+        for(int i=0;i<n;i++)
+        {
+            sum1+=A[i];
+            mp[A[i]]=i;
+        }
+        for(int i=0;i<m;i++)
+        sum2+=B[i];
+        int diff=sum1-sum2;
+        if(diff%2!=0)
+        return -1;
+        else
+        diff=diff/2;
+        for(int i=0;i<m;i++)
+        {
+            if(mp.find(B[i]+diff)!=mp.end())
+            return 1;
+            if(mp.find(B[i]-diff)!=mp.end())
+            return 1;
+        }
+        
+        return -1;
+        
+	}
