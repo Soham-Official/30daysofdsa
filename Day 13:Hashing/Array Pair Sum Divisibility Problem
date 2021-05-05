@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/array-pair-sum-divisibility-problem3257/0/?track=md-hashing&batchId=144
+
+ bool canPair(vector<int> nums, int k) {
+        unordered_map<int,int>mp;
+        for(int i=0;i<nums.size();i++)
+        mp[nums[i]%k]++;
+        for(int i=0;i<nums.size();i++)
+        {
+            int rem=nums[i]%k;
+            if(rem==0)
+            {
+               if(mp[rem]%2!=0)
+               return false;
+            }
+            else if(2*rem==k){
+                if(mp[rem]%2!=0)
+                return false;
+            }
+            else
+            {
+              int rem2=k-rem;
+              if(mp.find(rem2)==mp.end())
+              return false;
+              else
+              {
+                  if(mp[rem]!=mp[rem2])
+                  return false;
+              }
+            }
+        }
+        return true;
+    }
