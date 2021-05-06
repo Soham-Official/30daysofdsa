@@ -1,0 +1,68 @@
+https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/0/?track=md-linkedlist&batchId=144
+
+struct Node* reverseList(struct Node *head)
+    {
+         struct Node* prev = NULL;
+         struct Node* current = head;
+         struct Node* next = NULL;
+         while (current != NULL) 
+         {
+           next = current->next;
+           current->next = prev;
+           prev = current;
+           current = next;
+          }
+         head = prev;
+         return head;
+    }
+    bool isPalindrome(Node *head)
+    {
+        Node* tmp;
+        tmp=head;
+        int i=0;
+        int flag=0;
+        while(tmp)
+        {
+            i++;
+            if(tmp->next and tmp->data!=tmp->next->data)
+            flag=1;
+            tmp=tmp->next;
+            
+        }
+        if(flag==0)
+        return true;
+        if(i==1)
+        return true;
+        if(i==2)
+        {
+            Node *ptr=head;
+            if(ptr->data==ptr->next->data)
+            return true;
+            else
+            return false;
+        }
+            if(i%2!=0)
+            i=i/2;
+            else
+            i=i/2-1;
+            tmp=head;
+            int c=0;
+            while(c<=i)
+            {
+                tmp=tmp->next;
+                c++;
+            }
+            Node *middle=tmp;
+            tmp=reverseList(tmp);
+            Node *tmp2=head;
+            
+            while(tmp)
+            {
+                if(tmp2->data!=tmp->data)
+                return false;
+                tmp=tmp->next;
+                tmp2=tmp2->next;
+            }
+        
+        return true;
+    }
