@@ -1,0 +1,17 @@
+https://practice.geeksforgeeks.org/problems/rearrange-a-linked-list/0/?track=md-linkedlist&batchId=144
+
+Node *rearrangeEvenOdd(Node *head)
+    {
+       Node *odd=head;
+       Node *even=head->next;
+       Node *evenhead=even;
+       while(odd->next and even->next)
+       {
+           odd->next=even->next;
+           odd=odd->next;
+           even->next=odd->next;
+           even=even->next;
+       }
+       odd->next=evenhead;
+       return head;
+    }
