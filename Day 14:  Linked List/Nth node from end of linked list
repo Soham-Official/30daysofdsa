@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/0/?track=md-linkedlist&batchId=144
+
+int getNthFromLast(Node *head, int n)
+{
+       int i=0;
+       Node* temp=head;
+       Node* temp2=head;
+       while(temp)
+       {
+           i++;
+           if(i>n)
+           temp2=temp2->next;
+           temp=temp->next;
+           
+       }
+       if(i<n)
+       return -1;
+       return temp2->data;
+}
