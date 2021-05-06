@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/circular-linked-list-delete-at-position/0/?track=dsa-workshop-1-linkedlist&batchId=308
+Node * deleteAtPosition(Node *head,int pos)
+{
+      struct Node * ptr=head;
+      struct Node * ptr2,*temp;
+     int i=1;
+     if(pos==1)
+     {
+         temp=head;
+         while(temp->next!=head)
+         temp=temp->next;
+         ptr2=head;
+         head=head->next;
+         free(ptr2);
+         temp->next=head;
+         return head;
+     }
+     while(i<pos-1)
+     {
+         ptr=ptr->next;
+         i++;
+         
+     }
+     ptr2=ptr->next;
+     ptr->next=ptr2->next;
+     free(ptr2);
+     return head;
+}
