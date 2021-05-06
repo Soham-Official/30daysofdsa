@@ -1,0 +1,56 @@
+https://practice.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/0/?track=md-linkedlist&batchId=144
+
+Node* temp1=head1;
+    Node* temp2=head2;
+    Node* head=NULL;
+    Node* tmp1;
+    Node* tmp2;
+    while(temp1 and temp2)
+    {
+        if(temp1->data < temp2->data)
+        {
+            if(head==NULL)
+            {
+                head=tmp1=new Node(temp1->data);
+            }
+            else
+            {
+                tmp2=new Node(temp1->data);
+                tmp1->next=tmp2;
+                tmp1=tmp2;
+            }
+            temp1=temp1->next;
+        }
+        else
+        {
+            if(head==NULL)
+            {
+                head=tmp1=new Node(temp2->data);
+            }
+            else
+            {
+                tmp2=new Node(temp2->data);
+                tmp1->next=tmp2;
+                tmp1=tmp2;
+            }
+            temp2=temp2->next;
+        }
+        
+        
+    }
+    while(temp1)
+    {
+        tmp2=new Node(temp1->data);
+        tmp1->next=tmp2;
+        tmp1=tmp2;
+        temp1=temp1->next;
+    }
+    while(temp2)
+    {
+        tmp2=new Node(temp2->data);
+        tmp1->next=tmp2;
+        tmp1=tmp2;
+        temp2=temp2->next;
+    }
+    return head;
+}  
