@@ -1,0 +1,29 @@
+https://practice.geeksforgeeks.org/problems/delete-middle-of-linked-list/0/?track=dsa-workshop-1-linkedlist&batchId=308
+
+Node* deleteMid(Node* head)
+{
+    int node=0;
+    struct Node *temp=head;
+    while(temp!=0)
+    {
+        node++;
+        temp=temp->next;
+    }
+    if(node%2==0)
+    node=node/2+1;
+    else
+     node=(node+1)/2;
+     struct Node * ptr=head;
+      struct Node * ptr2;
+     int i=1;
+     while(i<node-1)
+     {
+         ptr=ptr->next;
+         i++;
+         
+     }
+     ptr2=ptr->next;
+     ptr->next=ptr2->next;
+     free(ptr2);
+     return head;
+}
