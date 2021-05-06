@@ -1,0 +1,10 @@
+https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/0/?track=dsa-workshop-1-linkedlist&batchId=308
+
+void deleteNode(Node *del)
+    {
+        Node * temp;
+       temp=del->next;
+       del->data=temp->data;
+       del->next=temp->next;
+       free(temp);
+    }
