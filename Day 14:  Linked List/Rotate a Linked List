@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/rotate-a-linked-list/0/?track=md-linkedlist&batchId=144
+
+Node* rotate(Node* head, int k)
+    {
+        Node * temp=head;
+        Node *newhead,*tail;
+        int i=1;
+       int flag=0;
+        while(temp->next!=NULL)
+        {
+            if(i==k)
+            {
+                newhead=temp;
+                flag=1;
+            }
+            temp=temp->next;
+            i++;
+        }
+        if(flag==1){
+        tail=temp;
+        tail->next=head;
+        temp=newhead->next;
+        newhead->next=NULL;
+        return temp;
+        }
+        else
+        return head;
+    }
