@@ -1,0 +1,39 @@
+https://practice.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/0/?track=dsa-workshop-1-stack&batchId=308
+
+long long getMaxArea(long long a[], int n){
+    stack<int>st;
+    long long int maxarea=INT_MIN;
+    int i=0;
+    a[n]=0;
+    while(i<=n)
+    {
+        while(!st.empty()&& a[st.top()]>a[i])
+        {
+            long long int top=st.top();
+            long long int area=a[top]*i;
+            st.pop();
+            if(st.empty())
+            maxarea=max(maxarea,area);
+            else
+            {
+                area=a[top]*(i-st.top()-1);
+                maxarea=max(maxarea,area);
+            }
+        }
+        st.push(i);
+        i++;
+    }
+    // int j=1;
+    // cout<<st.top();
+    while(!st.empty())
+    {
+        long long int top=st.top();
+        long long int area=a[top]*i;
+        st.pop();
+        // j++;
+        maxarea=max(maxarea,area);
+    }
+    return maxarea;
+    
+    
+    }
