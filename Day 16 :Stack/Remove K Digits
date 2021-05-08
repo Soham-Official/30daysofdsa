@@ -1,0 +1,54 @@
+https://practice.geeksforgeeks.org/problems/remove-k-digits/0/?track=md-stack&batchId=144
+
+string removeKdigits(string s, int K) 
+    {
+      stack<int>st;
+      for(int i=0;i<s.size();i++)
+      {
+         if(K)
+         {
+         if(st.empty())
+          {
+              if(s[i]!='0')
+              st.push(s[i]);
+              else
+              continue;
+          }
+          else
+          {
+              while(!st.empty() and st.top()>s[i])
+              {
+                  st.pop();
+                  K--;
+                  if(K==0)
+                  break;
+               }
+               if(st.empty() and s[i]=='0')
+               continue;
+               st.push(s[i]);
+          }
+         }
+         else
+         {
+               if(st.empty() and s[i]=='0')
+               continue;
+               st.push(s[i]);
+         }
+         
+      }
+      while(!st.empty() and K--)
+      {
+          st.pop();
+          
+      }
+      if(st.empty())
+          return "0";
+      string ans;
+      while(!st.empty())
+      {
+          ans+=st.top();
+          st.pop();
+      }
+      reverse(ans.begin(),ans.end());
+      return ans;
+    }
