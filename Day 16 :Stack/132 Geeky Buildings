@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/355f731797ea1acbd5ab698b19eb1c3c469aa837/0/?track=md-stack&batchId=144#
+
+bool recreationalSpot(int arr[], int n){
+		int mini[n];
+		mini[0]=arr[0];
+		for(int i=1;i<n;i++)
+		mini[i]=min(arr[i],mini[i-1]);
+		stack<int>st;
+		for(int i=n-1;i>=0;i--)
+		{
+		   if(arr[i]>mini[i])
+		   {
+		       while(!st.empty() and st.top()<=mini[i])
+		       st.pop();
+		       if(!st.empty())
+		       {
+		           if(st.top()<arr[i])
+		           return true;
+		       }
+		       st.push(arr[i]);
+		   }
+		}
+		return false;
+	}
