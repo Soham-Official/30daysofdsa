@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/stack-using-two-queues/0/?track=dsa-workshop-1-queue&batchId=308
+
+void QueueStack :: push(int x)
+{
+        q1.push(x);
+        
+}
+
+//Function to pop an element from stack using two queues. 
+int QueueStack :: pop()
+{
+      if(q1.empty())
+      return -1;
+      else
+      {
+        
+          while(q1.size()!=1)
+          {
+              int y=q1.front();
+              q2.push(y);
+              q1.pop();
+          }
+          int x=q1.front();
+          q1.pop();
+          while(!q2.empty())
+          {
+              int z=q2.front();
+              q1.push(z);
+              q2.pop();
+          }
+          return x;
+      }
+}
