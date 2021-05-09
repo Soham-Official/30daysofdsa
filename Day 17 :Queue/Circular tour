@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/circular-tour-1587115620/0/?track=md-queue&batchId=144
+
+int tour(petrolPump p[],int n)
+    {
+       int start=0;
+       int end=1;
+       int curpet=p[0].petrol-p[0].distance;
+       while(start!=end or curpet<0)
+       {
+           while(start!=end and curpet<0)
+           {
+               curpet-=p[start].petrol-p[start].distance;
+               start=(start+1)%n;
+               if(start==0)
+               return -1;
+           }
+           curpet+=p[end].petrol-p[end].distance;
+           end=(end+1)%n;
+       }
+       return start;
+    }
