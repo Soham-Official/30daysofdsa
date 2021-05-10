@@ -1,8 +1,6 @@
 https://practice.geeksforgeeks.org/problems/gray-code-1587115620/0/?track=dsa-workshop-1-bit-magic&batchId=308
 
  int greyConverter(int n)
-    {
-        
+       {
         return (n^(n>>1));
-        
-    }
+       }
