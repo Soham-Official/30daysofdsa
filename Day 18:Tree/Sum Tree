@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/sum-tree/0/?track=dsa-workshop-1-trees&batchId=308
+
+int sum(Node *root)
+    {
+        if(root==NULL)
+        return 0;
+        return sum(root->left) + root->data +  sum(root->right);
+    }
+    bool isSumTree(Node* root)
+    {
+         if(root==NULL or (root->left==NULL and root->right==NULL))
+         return true;
+         int leftS=sum(root->left);
+         int rightS=sum(root->right);
+         if(root->data==leftS+rightS and  ( isSumTree(root->left) && isSumTree(root->right)) )
+         return true;
+         return false;
+    }
