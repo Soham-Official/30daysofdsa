@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/root-to-leaf-path-sum/0/?track=dsa-workshop-1-trees&batchId=308
+
+bool hasPathSum(Node *root, int S) {
+    if(root==NULL)
+    {
+        if(S==0)
+        return true;
+        return false;
+    }
+    if(root->left==NULL and root->right==NULL)
+    {
+        if(S==root->data)
+        return true;
+        return false;
+    }
+    int sum=S-root->data;
+    return hasPathSum(root->left,sum) or hasPathSum(root->right,sum);
+}
