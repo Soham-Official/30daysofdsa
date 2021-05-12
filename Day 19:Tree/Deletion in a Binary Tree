@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/deletion-in-a-binary-tree/0/?track=dsa-workshop-1-trees&batchId=308
+
+struct Node* deletionBT(struct Node* root, int key)
+{
+    queue<Node*> q;
+    q.push(root);
+    struct Node* parent=NULL,*save=NULL;
+    while(!q.empty())
+    {
+      struct Node* temp=q.front(); 
+      q.pop();
+      if(temp->data == key) 
+      save=temp;
+      if(temp->left)
+      { 
+         q.push(temp->left); 
+         if(temp->left->left==NULL && temp->left->right==NULL)
+         parent=temp;
+      }
+      if(temp->right)
+      { 
+          q.push(temp->right); 
+          if(temp->right->left==NULL && temp->right->right==NULL)
+          parent=temp;
+       }
+     }
+     if(parent!=NULL)
+     {
+       if(parent->right!=NULL) 
+           {
+               save->data=parent->right->data; 
+               parent->right=NULL;
+           }
+           
+       else 
+     {
+         save->data=parent->left->data; 
+         parent->left=NULL;
+     }
+       
+      }
+return root;
+}
