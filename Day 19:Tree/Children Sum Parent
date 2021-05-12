@@ -1,0 +1,15 @@
+https://practice.geeksforgeeks.org/problems/children-sum-parent/0/?track=dsa-workshop-1-trees&batchId=308
+
+int isSumProperty(Node *root)
+{
+         if(root==NULL or (root->left==NULL and root->right==NULL))
+         return 1;
+         int leftS=0,rightS=0;
+         if(root->left)
+         leftS=root->left->data;
+         if(root->right)
+         rightS=root->right->data;
+         if(root->data==leftS+rightS and  ( isSumProperty(root->left) && isSumProperty(root->right)) )
+         return 1;
+         return 0;
+}
