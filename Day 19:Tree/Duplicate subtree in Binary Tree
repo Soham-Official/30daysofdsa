@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/0/?track=dsa-workshop-1-trees&batchId=308
+unordered_map<string,int> mp;
+
+string solve(Node* root)
+{
+    if(!root)
+    return "|";
+    string s="";
+    if(!root->left and !root->right)
+    {
+        s+=to_string(root->data);
+        return s;
+    }
+    s+=to_string(root->data);
+    s+=solve(root->left);
+    s+=solve(root->right);
+    mp[s]++;
+    return s;
+}
+bool dupSub(Node *root)
+{
+     mp.clear();
+     solve(root);
+     for(auto i:mp)
+     {
+         if(i.second>=2)
+         return true;
+     }
+     return false;
+     //your code here
+}
