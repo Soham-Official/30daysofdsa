@@ -1,0 +1,52 @@
+https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/0/?track=md-tree&batchId=144
+
+void  printleft(Node * root,vector<int> &ans)
+    {
+        if(root==NULL)
+        return;
+        if(root->left)
+        {
+            ans.push_back(root->data);
+            printleft(root->left,ans);
+        }
+        else if(root->right)
+        {
+            ans.push_back(root->data);
+            printleft(root->right,ans);
+        }
+    }
+    void printleaf(Node * root,vector<int> &ans)
+    {
+        if(root==NULL)
+        return;
+        printleaf(root->left,ans);
+        if(root->left==NULL and root->right==NULL)
+        ans.push_back(root->data);
+        printleaf(root->right,ans);
+    }
+    void printright(Node * root,vector<int> &ans)
+    {
+        if(root==NULL)
+        return;
+        if(root->right)
+        {
+            
+            printright(root->right,ans);
+            ans.push_back(root->data);
+        }
+        else if(root->left)
+        {
+            
+            printright(root->left,ans);
+            ans.push_back(root->data);
+        }
+    }
+    vector <int> printBoundary(Node *root)
+    {
+        vector<int>ans;
+         ans.push_back(root->data);
+        printleft(root->left,ans);
+        printleaf(root,ans);
+        printright(root->right,ans);
+        return ans;
+    }
