@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/print-a-binary-tree-in-vertical-order/0/?track=md-tree&batchId=144
+
+vector<int> verticalOrder(Node *root)
+    {
+        vector<int>v;
+        queue<pair<Node *,int>>q;
+        map<int,vector<int>>mp;
+        q.push({root,0});
+        while(!q.empty())
+        {
+            Node *t=q.front().first;
+            int level=q.front().second;
+            q.pop();
+            mp[level].push_back(t->data);
+            if(t->left)
+            q.push({t->left,level-1});
+            if(t->right)
+            q.push({t->right,level+1});
+        }
+        for(auto i:mp)
+        {
+            for(auto j:i.second)
+            v.push_back(j);
+        }
+        return v;
+    }
