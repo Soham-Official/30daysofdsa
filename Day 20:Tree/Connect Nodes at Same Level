@@ -1,0 +1,49 @@
+https://practice.geeksforgeeks.org/problems/connect-nodes-at-same-level/0/?track=md-tree&batchId=144
+
+void connect(Node *root)
+    {
+       if(root==NULL)
+       return;
+       queue<Node *>q;
+       queue<Node *>q1;
+       q.push(root);
+       q.push(NULL);
+       while(!q.empty())
+       {
+           Node *t=q.front();
+           q.pop();
+           if(t==NULL)
+           {
+               if(!q.empty())
+               {
+                   q.push(NULL);
+                   q1.push(NULL);
+               }
+           }
+           else
+           {
+           if(t->left)
+           q.push(t->left);
+           if(t->right)
+           q.push(t->right);
+           q1.push(t);
+          
+           }
+       }
+      while(!q1.empty())
+      {
+          Node *t=q1.front();
+          q1.pop();
+          if(q1.empty())
+          t->nextRight=NULL;
+          else
+          {
+              Node* t1=q1.front();
+              t->nextRight=t1;
+              if(t1==NULL)
+              q1.pop();
+          }
+           
+      }
+    }    
+      
