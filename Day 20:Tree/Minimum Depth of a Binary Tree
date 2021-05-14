@@ -1,0 +1,14 @@
+https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/0/?track=md-tree&batchId=144
+int minDepth(Node *root) {
+        if(!root)
+        return 0;
+        if(root->left==NULL and root->right==NULL)
+        return 1;
+        int x=INT_MAX;
+        int y=INT_MAX;
+        if(root->left)
+        x=minDepth(root->left);
+        if(root->right)
+        y=minDepth(root->right);
+        return min(x,y)+1;
+    }
