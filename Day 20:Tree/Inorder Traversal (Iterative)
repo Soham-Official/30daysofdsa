@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/inorder-traversal-iterative/0/?track=md-tree&batchId=144
+vector<int> inOrder(Node* root)
+    {
+        vector<int>v;
+        if(root==NULL)
+        return v;
+        stack<Node *>st;
+        Node *t=root;
+        while(t!=NULL or !st.empty())
+        {
+            if(t!=NULL)
+            {
+                st.push(t);
+                t=t->left;
+            }
+            else
+            {
+                t=st.top();
+                st.pop();
+                v.push_back(t->data);
+                t=t->right;
+            }
+        }
+        return v;
+    }
