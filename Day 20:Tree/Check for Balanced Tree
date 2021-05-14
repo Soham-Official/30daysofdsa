@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/0/?track=md-tree&batchId=144
+int calheight(Node *root)
+{
+     if(!root)
+     return 0;
+     int x=calheight(root->left);
+     int y=calheight(root->right);
+     return max(x,y)+1;
+}
+bool isBalanced(Node *root)
+{
+    if(!root)
+    return true;
+    int left=calheight(root->left);
+    int right=calheight(root->right);
+    if(abs(left-right)<=1 and isBalanced(root->left) and isBalanced(root->right) )
+    return true;
+    return false;
+}
