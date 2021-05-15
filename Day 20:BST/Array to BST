@@ -1,0 +1,17 @@
+https://practice.geeksforgeeks.org/problems/array-to-bst4443/0/?track=md-BST&batchId=144
+
+void builtBST(vector<int>& nums,int start,int end,vector<int>& v)
+    {
+        if(start>end)
+        return ;
+        int x=(start+end)/2;
+        v.push_back(nums[x]);
+        builtBST(nums,start,x-1,v);
+        builtBST(nums,x+1,end,v);
+    }
+    vector<int> sortedArrayToBST(vector<int>& nums) {
+        vector<int>v;
+        int n=nums.size();
+        builtBST(nums,0,n-1,v);
+        return v;
+    }
