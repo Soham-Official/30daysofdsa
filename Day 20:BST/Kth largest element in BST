@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/0/?track=md-BST&batchId=144
+
+void largest(Node *root,int k,int &i,int &ans)
+    {
+        if(root==NULL or i>k)
+        return ;
+        largest(root->right,k,i,ans);
+        i++;
+        if(i==k)
+        {
+            ans=root->data;
+            return;
+        }
+        largest(root->left,k,i,ans);
+    }
+    int kthLargest(Node *root, int k)
+    {
+         int i=0;
+         int ans;
+         largest(root,k,i,ans);
+        
+        return ans;
+    }
