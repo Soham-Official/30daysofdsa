@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/remove-bst-keys-outside-given-range/0/?track=md-BST&batchId=144
+
+ Node* removekeys(Node* root, int l, int r) {
+        if(root==NULL)
+        return NULL;
+        root->left=removekeys(root->left,  l,  r);
+        root->right=removekeys(root->right,  l,  r);
+        if(root->data<l)
+        {
+            Node *t=root;
+            free(root);
+            return t->right;
+        }
+        if(root->data>r)
+        {
+            Node *t=root;
+            free(root);
+            return t->left;
+        }
+        return root;
+    }
