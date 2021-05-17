@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/huffman-decoding-1/0/?track=dsa-workshop-1-heap&batchId=308
+
+string decode_file(struct MinHeapNode* root, string s)
+{
+    string ans="";
+     MinHeapNode *t=root;
+    for(int i=0;s[i];i++)
+    {
+           if(s[i]=='0')
+           t=t->left;
+           else
+           t=t->right;
+           if(t->left==NULL and t->right==NULL)
+           {
+               ans+=t->data;
+               t=root;
+           }
+        
+    }
+    return ans;
+}
