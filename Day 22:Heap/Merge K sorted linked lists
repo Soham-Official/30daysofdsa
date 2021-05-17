@@ -1,0 +1,42 @@
+https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/0/?track=md-heap&batchId=144
+
+struct compare {
+    bool operator()(
+        struct Node* a, struct Node* b)
+    {
+        return a->data > b->data;
+    }
+};
+class Solution{
+  public:
+  
+    Node * mergeKLists(Node *arr[], int K)
+    {
+          priority_queue < Node*, vector<Node*> , compare> pq;
+       for (int i = 0; i < K; i++)
+        {
+            if (arr[i] != NULL)
+            pq.push(arr[i]);
+        }
+   
+       Node *head=NULL ;
+       Node *last ;
+    while (!pq.empty()) {
+ 
+        Node* curr = pq.top();
+        pq.pop();
+          if(head==NULL)
+          {
+              head=curr;
+              last=head;
+          }
+          else
+          {
+          last->next = curr;
+          last = last->next; 
+          }
+        if (curr->next != NULL)
+            pq.push(curr->next);
+    }
+    return head;
+    }
