@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/most-occurring-elements-1587115620/0/?track=dsa-workshop-1-heap&batchId=308
+
+bool operator()(pair<int, int> p1, pair<int, int> p2)
+    {
+        if (p1.second == p2.second)
+            return p1.first < p2.first;
+        return p1.second < p2.second;
+    }
+};
+    int kMostFrequent(int arr[], int n, int k) 
+    { 
+    	 unordered_map<int, int> mp;
+         for (int i = 0; i < n; i++)
+            mp[arr[i]]++;	
+        priority_queue<pair<int, int>, vector<pair<int, int> >,compare> pq(mp.begin(), mp.end());
+        int sum=0;
+       for(int i=0;i<k;i++)
+        {
+            sum+=pq.top().second;
+            pq.pop();
+        }
+        return sum;
+    } 
