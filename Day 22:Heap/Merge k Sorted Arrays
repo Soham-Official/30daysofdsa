@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/0/?track=dsa-workshop-1-heap&batchId=308
+
+vector<int> mergeKArrays(vector<vector<int>> arr, int K)
+    {
+        priority_queue<pq,vector<pq>,greater<pq>>q;
+        for(int i=0;i<K;i++)
+          q.push(make_pair(arr[i][0],make_pair(i,0)));
+         vector<int>ans;
+        while(!q.empty())
+        {
+            int topEle=q.top().first;
+            int array=q.top().second.first;
+            int index=q.top().second.second;
+            ans.push_back(topEle);
+            q.pop();
+            if(index<K-1)
+            {
+                index++;
+                q.push(make_pair(arr[array][index],make_pair(array,index)));
+            }
+        }
+        return ans;
+    }
