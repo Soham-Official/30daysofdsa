@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/0/?track=dsa-workshop-1-graph&batchId=308
+
+vector<int>bfsOfGraph(int V, vector<int> adj[])
+	{
+	    vector<int>v;
+	    int a[V]={0};
+	   // for(int j=0;j<V;j++)
+    //     {
+            queue<int>q;
+            // if(a[j]==0)
+            // {
+                q.push(0);
+                a[0]==1;
+            
+        while(!q.empty())
+        {
+            int t=q.front();
+            q.pop();
+            v.push_back(t);
+            for(auto i:adj[t])
+            {
+                if(a[i]==0)
+                {
+                    q.push(i);
+                    a[i]=1;
+                }
+            }
+        }
+            // }
+        // }
+	    return v;
+	}
