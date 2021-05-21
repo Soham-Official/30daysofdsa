@@ -1,0 +1,34 @@
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/0/?track=dsa-workshop-1-graph&batchId=308
+
+bool isCyclic(int V, vector<int> adj[]) 
+	{
+	   	int count=0;
+	   	vector<int>indegree(V,0);
+	    for(int i=0;i<V;i++)
+	    {
+	        for(auto j:adj[i])
+	        indegree[j]++;
+	    }
+	    queue<int>q;
+	    for(int i=0;i<V;i++)
+	    {
+	        if(indegree[i]==0)
+	        q.push(i);
+	    }
+	    while(!q.empty())
+	    {
+	        int t=q.front();
+	        count++;
+	        q.pop();
+	        for(auto it:adj[t])
+	        {
+	            indegree[it]--;
+	            if(indegree[it]==0)
+	            q.push(it);
+	        }
+	    }
+	    if(count==V)
+	    return false;
+	    else
+	    return true;
+	}
