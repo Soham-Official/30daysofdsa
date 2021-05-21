@@ -1,0 +1,37 @@
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/0/?track=dsa-workshop-1-graph&batchId=308
+
+bool detectCycle(int x,vector<int>adj[],vector<int> &vis)
+    {
+        queue<pair<int,int>>q;
+        q.push({x,-1});
+        vis[x]=1;
+        while(!q.empty())
+        {
+            pair<int,int> t=q.front();
+            q.pop();
+            for(auto i:adj[t.first])
+            {
+                if(vis[i]==1 and i!=t.second)
+                return true;
+                if(vis[i]==0)
+                {
+                    q.push({i,t.first});
+                    vis[i]=1;
+                }
+            }
+        }
+        return false;
+    }
+	bool isCycle(int V, vector<int>adj[])
+	{
+	    vector<int>vis(V,0);
+	    for(int i=0;i<V;i++)
+	    {
+	        if(vis[i]==0)
+	        {
+	            if(detectCycle(i,adj,vis))
+	            return true;
+	        }
+	    }
+	    return false;
+	}
