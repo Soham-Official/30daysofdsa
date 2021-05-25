@@ -1,0 +1,62 @@
+https://practice.geeksforgeeks.org/problems/minimum-cost-path3833/0/?track=md-graph&batchId=144
+
+struct compare {
+    bool operator()(pair<int,pair<int,int>> p1, pair<int,pair<int,int>> p2)
+    {
+        return p1.first > p2.first;
+    }
+};
+    int minimumCostPath(vector<vector<int>>& grid) 
+    {
+        int n;
+        n=grid.size();
+        priority_queue <pii, vector<pii>, compare>q; 
+        q.push({grid[0][0],{0,0}});
+        int vis[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            vis[i][j]=0;
+        }
+        vis[0][0]=1;
+        while(!q.empty())
+        {
+            auto ele=q.top();
+            q.pop();
+            int i=ele.second.first;
+            int j=ele.second.second;
+            int cost=ele.first;
+            // cout<<i<<" "<<j<<" "<<cost<<vis[i][j]<<" "<<vis[i+1][j]<<" "<<vis[i][j+1]; 
+            if(i==j and i==n-1)
+            return cost;
+            if(j-1>=0 and vis[i][j-1]==0)
+            {
+                q.push({cost+grid[i][j-1],{i,j-1}});
+                vis[i][j-1]=1;
+                // cout<<"1"<<" "<<i<<" "<<j;
+            }
+             if(j<n-1 and vis[i][j+1]==0)
+            {
+              q.push({cost+grid[i][j+1],{i,j+1}});
+              vis[i][j+1]=1;
+            //   cout<<"2"<<" "<<i<<" "<<j;
+            }
+            
+             if(i-1>=0 and vis[i-1][j]==0)
+            {
+                q.push({cost+grid[i-1][j],{i-1,j}});
+                vis[i-1][j]=1;
+                // cout<<"3"<<" "<<i<<" "<<j;
+            }
+            
+             if(i+1<=n-1 and vis[i+1][j]==0)
+            {
+                q.push({cost+grid[i+1][j],{i+1,j}});
+                vis[i+1][j]=1;
+                // cout<<"4"<<" "<<i<<" "<<j;
+            }
+            // cout<<endl;
+           
+        }
+        return 0;
+    }
