@@ -1,0 +1,54 @@
+https://practice.geeksforgeeks.org/problems/alien-dictionary/0/?track=md-graph&batchId=144
+
+string findOrder(string dict[], int N, int K) {
+        vector<vector<int>> adj(K);
+        for(int i=0;i<N-1;i++)
+        {
+            string word1=dict[i];
+            string word2=dict[i+1];
+            int size=min(word1.size(),word2.size());
+            for(int i=0;i<size;i++)
+            {
+                if(word1[i]!=word2[i])
+                {
+                    adj[word1[i]-'a'].push_back(word2[i]-'a');
+                    break;
+                }
+                
+            }
+        }
+        vector<int>indegree(K,0);
+	    for(int i=0;i<K;i++)
+	    {
+	        for(auto j:adj[i])
+	        indegree[j]++;
+	        
+	    }
+	   // int mini=*min_element(indegree.begin(),indegree.end());
+	   // for(int i=0;i<K;i++)
+	   // indegree[i]-=mini;
+	    queue<int>q;
+	    string ans="";
+	    for(int i=0;i<K;i++)
+	    {
+	        if(indegree[i]==0)
+	            q.push(i);
+	    }
+	    while(!q.empty())
+	    {
+	        int t=q.front();
+	        char s=t+'a';
+	        ans+=s;
+	        q.pop();
+	        for(auto it:adj[t])
+	        {
+	            indegree[it]--;
+	            if(indegree[it]==0)
+	            q.push(it);
+	        }
+	    }
+	   // for(auto i:ans)
+	   // cout<<i<<" ";
+	   // cout<<ans.size();
+	    return ans;
+    }
