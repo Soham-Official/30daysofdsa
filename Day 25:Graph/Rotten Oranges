@@ -1,0 +1,70 @@
+https://practice.geeksforgeeks.org/problems/rotten-oranges2536/0/?track=dsa-workshop-1-graph&batchId=308
+
+int orangesRotting(vector<vector<int>>& grid) {
+        queue<pair<pair<int,int>,int>>q;
+        int n=grid.size();
+        int m=grid[0].size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(grid[i][j]==2)
+                {
+                    q.push({{i,j},0});
+                    // cout<<i<<" "<<j<<endl;
+                }
+            }
+        }
+        int ans=0;
+        if(q.empty())
+        return 0;
+        int count=0;
+        while(!q.empty())
+        {
+            auto ele=q.front();
+            q.pop();
+            int ii=ele.first.first;
+            int jj=ele.first.second;
+            int t=ele.second;
+            ans=max(ans,t);
+            if(jj+1<m and grid[ii][jj+1]==1)
+            {
+                // cout<<count<<" "<<ii<<" "<<jj<<" ";
+                grid[ii][jj+1]=2;
+                q.push({{ii,jj+1},t+1});
+                // ans=max(ans,t+1);
+            }
+             if(jj-1>=0 and grid[ii][jj-1]==1)
+            {
+                // cout<<count<<" "<<ii<<" "<<jj<<" ";
+                grid[ii][jj-1]=2;
+                q.push({{ii,jj-1},t+1});
+                // ans=max(ans,t+1);
+            }
+             if(ii+1<n and grid[ii+1][jj]==1)
+            {
+                // cout<<count<<" "<<ii<<" "<<jj<<" ";
+                grid[ii+1][jj]=2;
+                q.push({{ii+1,jj},t+1});
+                // ans=max(ans,t+1);
+            }
+             if(ii-1>=0 and grid[ii-1][jj]==1)
+            {
+                // cout<<count<<" "<<ii<<" "<<jj<<" ";
+                grid[ii-1][jj]=2;
+                q.push({{ii-1,jj},t+1});
+                // ans=max(ans,t+1);
+            }
+            count++;
+            // cout<<endl;
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(grid[i][j]==1)
+                return -1;
+            }
+        }
+        return ans;
+    }
