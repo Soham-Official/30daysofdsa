@@ -1,0 +1,11 @@
+https://practice.geeksforgeeks.org/problems/final-destination4628/0/?track=md-graph&batchId=144
+
+int canReach(long long a, long long b, long long x) {
+        if(abs(a)+abs(b)>x)
+        return 0;
+        if(abs(a)+abs(b)==x)
+        return 1;
+        if(abs(abs(a)+abs(b)-x)%2==0)
+        return 1;
+        return 0;
+    }
