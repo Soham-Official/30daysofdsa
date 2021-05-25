@@ -1,0 +1,38 @@
+https://practice.geeksforgeeks.org/problems/length-of-largest-region-of-1s-1587115620/0/?track=dsa-workshop-1-graph&batchId=308
+
+void DFSRec(vector<vector<int>> &mat, int N, int M, int i, int j,int &maxi)
+    {
+        if(i >= 0 and i < N and j >= 0 and j < M and mat[i][j] == 1)
+        {
+            mat[i][j] = 2;
+            maxi++;
+            DFSRec(mat, N, M, i, j+1,maxi);
+            DFSRec(mat, N, M, i, j-1,maxi);
+            DFSRec(mat, N, M, i-1, j,maxi);
+            DFSRec(mat, N, M, i+1, j,maxi);
+            DFSRec(mat, N, M, i+1, j+1,maxi);
+            DFSRec(mat, N, M, i+1, j-1,maxi);
+            DFSRec(mat, N, M, i-1, j-1,maxi);
+            DFSRec(mat, N, M, i-1, j+1,maxi);
+        }
+    }
+    int findMaxArea(vector<vector<int>>& mat) {
+        int N = mat.size();
+        int M = mat[0].size();
+        int ans=INT_MIN;
+        int maxi;
+        for(int i = 0; i < N; i++)
+        {
+            for(int j = 0; j < M; j++)
+            {
+                if(mat[i][j] == 1)
+                {
+                    maxi=0;
+                    DFSRec(mat, N, M, i, j,maxi);
+                    ans=max(ans,maxi);
+                }
+            }
+        }
+        
+        return ans;
+    }
