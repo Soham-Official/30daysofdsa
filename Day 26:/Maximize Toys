@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/maximize-toys0331/0/?track=md-greedy&batchId=144
+
+int toyCount(int N, int K, vector<int> arr)
+    {
+        sort(arr.begin(),arr.end());
+        int count=0,sum=0;
+        for(auto i:arr)
+        {
+            sum+=i;
+            if(sum<=K)
+            count++;
+            else
+            break;
+        }
+        return count;
+    }
