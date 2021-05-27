@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/choose-and-swap0531/0/?track=md-greedy&batchId=144
+
+string chooseandswap(string a){
+        set<char>s;
+        for(auto i:a)
+        s.insert(i);
+        char small='$',big='$';
+        for(auto i:a)
+        {
+            s.erase(i);
+            if(s.empty())
+            break;
+            if(i>*s.begin())
+            {
+                small=*s.begin();
+                big=i;
+                break;
+            }
+        }
+        if(small=='$')
+        return a;
+        for(int i=0;i<a.size();i++)
+        {
+            if(a[i]==big)
+            a[i]=small;
+            else if(a[i]==small)
+            a[i]=big;
+        }
+        return a;
+    }
