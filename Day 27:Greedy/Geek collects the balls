@@ -1,0 +1,56 @@
+https://practice.geeksforgeeks.org/problems/geek-collects-the-balls5515/0/?track=md-greedy&batchId=144
+
+int maxBalls(int N, int M, int a[], int b[]){
+        int sum1=0,sum2=0,sum=0;
+        int i=0,j=0;
+        if(N == 1 && M == 2)
+        return 2;
+        while(i<N and j<M)
+        {
+            if(a[i]==b[j])
+            {
+                sum+=a[i]+max(sum1,sum2);
+                sum1=0;
+                sum2=0;
+                int temp1=a[i];
+                int temp2=b[j];
+                i++;
+                j++;
+                while(a[i]==temp1)
+                {
+                    sum1+=a[i];
+                    i++;
+                }
+                while(b[j]==temp2)
+                {
+                    sum2+=b[j];
+                    j++;
+                }
+                sum+=max(sum1,sum2);
+                sum1=0;
+                sum2=0;
+            }
+            else if(a[i]<b[j])
+            {
+                sum1+=a[i];
+                i++;
+            }
+            else
+            {
+                sum2+=b[j];
+                j++;
+            }
+        }
+        while(i<N)
+        {
+            sum1+=a[i];
+            i++;
+        }
+        while(j<M)
+        {
+            sum2+=b[j];
+            j++;
+        }
+        sum+=max(sum1,sum2);
+        return sum;
+    }
