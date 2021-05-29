@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1/?track=dsa-workshop-1-greedy&batchId=308
+static bool mycmp(struct Item a,struct Item b)
+    {
+        return a.value/a.weight>b.value/b.weight;
+    }
+    public:
+    
+    double fractionalKnapsack(int W, Item arr[], int n)
+    {
+        sort(arr,arr+n,mycmp);
+        double w=0;
+        double val=0;
+        for(int i=0;i<n;i++)
+        {
+            if(w+arr[i].weight<=W)
+            {
+                w+=arr[i].weight;
+                val+=arr[i].value;
+            }
+            else
+            {
+                int x=W-w;
+                val+=(double)((arr[i].value*x)/arr[i].weight);
+            }
+        }
+        return val;
+    }
