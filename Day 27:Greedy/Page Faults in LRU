@@ -1,0 +1,42 @@
+https://practice.geeksforgeeks.org/problems/page-faults-in-lru5603/0/?track=md-greedy&batchId=144
+
+int pageFaults(int N, int C, int pages[]){
+        vector<int>v;
+        int ans=0;
+        for(int i=0;i<N;i++)
+        {
+            if(q.size()<C)
+            {
+                if(mp.find(pages[i])==mp.end())
+                { 
+                    mp[pages[i]]++;
+                    q.push(pages[i]);
+                    ans++;
+                }
+                else
+                {
+                    q.pop();
+                    q.push(pages[i]);
+                }
+            }
+            else
+            {
+                if(mp.find(pages[i])==mp.end())
+                { 
+                    int t=q.front();
+                    q.pop();
+                    mp.erase(t);
+                    mp[pages[i]]++;
+                    q.push(pages[i]);
+                    ans++;
+                }
+                else
+                {
+                    q.pop();
+                    q.push(pages[i]);
+                }
+                
+            }
+        }
+        return ans;
+    }
