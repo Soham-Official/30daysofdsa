@@ -1,0 +1,12 @@
+https://practice.geeksforgeeks.org/problems/nth-fibonacci-number1335/0/?track=md-dp&batchId=144
+
+long long int nthFibonacci(long long int n){
+       long long int dp[n+1];
+        dp[0]=0;
+        dp[1]=1;
+        dp[2]=1;
+        dp[3]=2;
+        for(auto i=4;i<n+1;i++)
+        dp[i]=(dp[i-1]+dp[i-2])%1000000007;
+        return dp[n];
+    }
