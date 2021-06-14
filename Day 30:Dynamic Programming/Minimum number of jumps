@@ -1,0 +1,34 @@
+https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps4102/0/?track=md-dp&batchId=144
+
+int minimumJumps(int arr[], int n){
+        if(arr[0]==0)
+        return -1;
+        int ans=1;
+        int jumpleft=arr[0];
+        int maxreach=arr[0];
+        if(maxreach>=n-1)
+        return ans;
+        for(int i=1;i<n;i++)
+        {
+            maxreach=max(maxreach,i+arr[i]);
+            jumpleft--;
+            // if(maxreach>=n-1)
+            // return ans+1;
+            if(jumpleft==0)
+            {
+                ans++;
+                jumpleft=maxreach-i;
+                if(maxreach<=i)
+                return -1;
+                if(maxreach>=n-1)
+                return ans;
+            }
+            if(maxreach>=n-1)
+            return ans+1;
+        }
+        if(maxreach>=n-1)
+            return ans;
+            else
+            return -1;
+        
+    }
