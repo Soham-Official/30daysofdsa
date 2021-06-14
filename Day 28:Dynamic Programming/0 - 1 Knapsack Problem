@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/0/?track=dsa-workshop-1-dp&batchId=308
+
+int knapSack(int w, int wt[], int val[], int n) 
+    { 
+       int mat[n+1][w+1];
+       for (int r = 0; r < w + 1; r++) 
+       mat[0][r] = 0;
+       for (int c = 0; c < n + 1; c++) 
+       mat[c][0] = 0;
+
+       for (int item = 1; item <= n; item++)
+       {
+            for (int capacity = 1; capacity <= w; capacity++)
+            {
+                int maxValWithoutCurr = mat[item - 1][capacity]; 
+                int maxValWithCurr = 0; 
+                int weightOfCurr = wt[item - 1]; 
+                if (capacity >= weightOfCurr)
+                { 
+                     maxValWithCurr = val[item - 1]; 
+                     int remainingCapacity = capacity - weightOfCurr; 
+                     maxValWithCurr += mat[item - 1][remainingCapacity]; 
+                }
+                mat[item][capacity] = max(maxValWithoutCurr, maxValWithCurr); 
+            }
+       }
+       return mat[n][w];
+    }
