@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/player-with-max-score/0/?track=md-dp&batchId=144
+
+ int t[1001][1001];
+    int solve(int arr[],int i,int j)
+    {
+        if(i>j)
+        return 0;
+        if(t[i][j]!=-1)
+        return t[i][j];
+        int takeleft=arr[i]+min(solve(arr,i+1,j-1),solve(arr,i+2,j));
+        int takeright=arr[j]+min(solve(arr,i+1,j-1),solve(arr,i,j-2));
+        t[i][j]=ans;
+        return t[i][j];
+    }
+    bool is1winner(int n,int arr[]) {
+        memset(t,-1,sizeof t);
+        int i=0;
+        int j=n-1;
+        int sum=solve(arr,i,j);
+        int sum2=0;
+        for(int i=0;i<n;i++)
+        sum2+=arr[i];
+        return sum>sum2-sum;
+        
+    }
