@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/path-in-matrix3805/0/?track=md-dp&batchId=144
+
+   int maximumPath(int N, vector<vector<int>> t )
+{
+for( int i = 1 ; i < N ; i++)
+for( int j = 0 ; j < N ; j++)
+{
+int a = INT_MIN , b = INT_MIN , c = INT_MIN ;
+
+a = t[i-1][j];
+if( j >= 1 )b = t[i-1][j-1];
+if( j < N-1 )c = t[i-1][j+1];
+
+t[i][j]+=max( {a , b , c });
+
+}
+
+
+int mx = INT_MIN ;
+for( int j = 0 ; j < N ; j++ )mx = max( mx , t[N-1][j] );
+
+return mx ;
+
+}
