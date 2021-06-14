@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/0/?track=dsa-workshop-1-dp&batchId=308
+
+int longestSubsequence(int n, int arr[])
+    {
+      int dp[n+1];
+      int i,j;
+      dp[1]=arr[0];
+      int len=1;
+      int ans=1;
+      for(i=1;i<n;i++)
+        {
+            for(j=len;j>=1;j--)
+                if(dp[j]<arr[i])
+                    break;
+                if(j==len)
+                 len++;
+                j++;
+                dp[j]=arr[i];
+                ans=max(len,ans);
+        }
+    return ans;
+    }
