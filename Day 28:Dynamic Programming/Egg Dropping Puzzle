@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/0/?track=dsa-workshop-1-dp&batchId=308
+int t[201][201];
+    int solve(int e, int f) 
+    {
+        if(e==1)
+        return f;
+        if(f==0 or f==1)
+        return f;
+        if(t[e][f]!=-1)
+        return t[e][f];
+        int ans=INT_MAX;
+        for(int K=1;K<=f;K++)
+        {
+            int temp=1+max(solve(e-1,K-1),solve(e,f-K));
+            ans=min(ans,temp);
+        }
+        t[e][f]=ans;
+        return ans;
+    }
+    int eggDrop(int n, int k) 
+    {
+        memset(t,-1,sizeof t);
+        return solve(n,k);
+        
+    }
